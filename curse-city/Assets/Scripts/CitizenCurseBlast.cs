@@ -9,15 +9,12 @@ public class CitizenCurseBlast : MonoBehaviour
 
     private void Start()
     {
-        //-! I usually don't like to use "find," but I thought it was safer than assigning a public variable in this case
-        //   in case we generate citizens with this script (you can delete this comment once you read it)
         player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
 
     void OnTriggerStay2D(Collider2D col)
     {
-        //-! I use this weird workaround compared to GetKeyDown because OnTriggerStay2D is called on Fixed Update so it goes stupid otherwise
         if (Input.GetKey(KeyCode.Space) && !GetComponent<CitizenController>().blownAway)
         {
             GetComponent<CitizenController>().blownAway = true;
