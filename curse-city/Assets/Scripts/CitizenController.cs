@@ -19,7 +19,8 @@ public class CitizenController : MonoBehaviour
     public float moveStateTimer;
 
     //actuall tracking timer for internal affairs
-    private float timer;
+    [HideInInspector]
+    public float timer;
 
     public bool blownAway;
 

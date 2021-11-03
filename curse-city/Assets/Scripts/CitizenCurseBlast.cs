@@ -15,7 +15,8 @@ public class CitizenCurseBlast : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (Input.GetKey(KeyCode.Space) && !GetComponent<CitizenController>().blownAway)
+        if (Input.GetKey(KeyCode.Space) && !GetComponent<CitizenController>().blownAway &&
+            PlayerController.gameLost == false)
         {
             GetComponent<CitizenController>().blownAway = true;
 
