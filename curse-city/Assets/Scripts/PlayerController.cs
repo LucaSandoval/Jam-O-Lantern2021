@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
         swearSlider.maxValue = swearBarMax;
         swearAmmount = swearBarMax / 2;
+
+        soundManager.Play("Theme");
     }
     
     void Update()
@@ -103,11 +105,15 @@ public class PlayerController : MonoBehaviour
             {
                 DieFromNotSwearing();
             }
-        } 
+        } else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     public void GetCaught()
     {
+        soundManager.Pause("Theme");
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "CAUGHT FOR SWEARING";
         gameOverText.SetActive(true);
@@ -116,6 +122,7 @@ public class PlayerController : MonoBehaviour
     public void DieFromSwearing()
     {
         // there has to be a better name for this
+        soundManager.Pause("Theme");
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM THE EXCITEMENT OF SWEARING";
         gameOverText.SetActive(true);
@@ -123,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void DieFromNotSwearing()
     {
+        soundManager.Pause("Theme");
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM A LACK OF SWEARING";
         gameOverText.SetActive(true);
@@ -132,5 +140,5 @@ public class PlayerController : MonoBehaviour
 public enum playerState
 {
     idle,
-    walking
+    walking,
 }
