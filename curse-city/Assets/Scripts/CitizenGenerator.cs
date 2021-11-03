@@ -5,6 +5,7 @@ using UnityEngine;
 public class CitizenGenerator : MonoBehaviour
 {
     public int startingCitizenCount;
+    public float spawnDelay;
     public GameObject citizen;
 
     void Start()
@@ -18,11 +19,20 @@ public class CitizenGenerator : MonoBehaviour
             float newX = (i * XIncrement) - 15;
             newCitizen.transform.localPosition = new Vector2(newX, 0);
         }
+
+        StartCoroutine(CitizenSpawning());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator CitizenSpawning()
     {
-        
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnDelay);
+            if(transform.childCount < startingCitizenCount)
+            {
+                GameObject newCitizen = Instantiate(citizen, gameObject.transform);
+                newCitizen.transform.localPosition = new Vector2(Random.Range(-15, 15), 0);
+            }
+        }
     }
 }

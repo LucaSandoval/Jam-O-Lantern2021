@@ -20,6 +20,9 @@ public class CitizenCurseBlast : MonoBehaviour
         {
             GetComponent<CitizenController>().blownAway = true;
 
+            //update score
+            ScoreTracker.score++;
+
             //generates new velocity based on position relative to player
             float blastBase = 40;
             float blastX = Mathf.Clamp((blastBase / (transform.position.x - player.transform.position.x)), -60, 60);
