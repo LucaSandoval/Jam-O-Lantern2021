@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
                 ammountToAdd -= Time.deltaTime * 100;
                 swearAmmount += Time.deltaTime * 100;
             }
+
+            if (swearAmmount > swearBarMax)
+            {
+                DieFromSwearing();
+            }
         } 
     }
 
@@ -74,6 +79,14 @@ public class PlayerController : MonoBehaviour
     {
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "CAUGHT FOR SWEARING";
+        gameOverText.SetActive(true);
+    }
+
+    public void DieFromSwearing()
+    {
+        // there has to be a better name for this
+        gameLost = true;
+        gameOverText.GetComponent<Text>().text = "YOU DIED FROM THE EXCITEMENT OF SWEARING";
         gameOverText.SetActive(true);
     }
 }
