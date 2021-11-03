@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public static bool gameLost;
 
     public GameObject gameOverText;
+    public GameObject swearEffect;
     
     void Start()
     {
@@ -45,9 +46,30 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ammountToAdd += 20;
+
+            StartCoroutine(SpawnSwearEffect());
         }
 
         swearSlider.value = swearAmmount;
+    }
+
+    public IEnumerator SpawnSwearEffect()
+    {
+        GameObject newExplosion = swearEffect;
+
+        GameObject spawnedExplosion = Instantiate(newExplosion);
+        spawnedExplosion.transform.position = transform.position;
+
+        yield return new WaitForSeconds(0.1f);
+
+        spawnedExplosion = Instantiate(newExplosion);
+        spawnedExplosion.transform.position = transform.position;
+
+        yield return new WaitForSeconds(0.1f);
+
+        spawnedExplosion = Instantiate(newExplosion);
+        spawnedExplosion.transform.position = transform.position;
+
     }
 
     private void FixedUpdate()
@@ -59,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
             if (swearAmmount > 0)
             {
-                swearAmmount -= Time.deltaTime * 5;
+                swearAmmount -= Time.deltaTime * 15;
             }
 
             if (ammountToAdd > 0)

@@ -22,6 +22,7 @@ public class CitizenCurseBlast : MonoBehaviour
 
             //update score
             ScoreTracker.score++;
+            ScoreTracker.scale += 0.2f;
 
             //generates new velocity based on position relative to player
             float blastBase = 40;
