@@ -24,10 +24,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject gameOverText;
     public GameObject swearEffect;
+
+    private SoundManager soundManager;
+    public string[] swears;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
 
         swearSlider.maxValue = swearBarMax;
         swearAmmount = swearBarMax / 2;
@@ -43,11 +47,13 @@ public class PlayerController : MonoBehaviour
             state = playerState.idle;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && gameLost == false)
         {
             ammountToAdd += 20;
 
             StartCoroutine(SpawnSwearEffect());
+
+            soundManager.Play(swears[Random.Range(0, swears.Length)]);
         }
 
         swearSlider.value = swearAmmount;
@@ -93,6 +99,9 @@ public class PlayerController : MonoBehaviour
             if (swearAmmount > swearBarMax)
             {
                 DieFromSwearing();
+            } else if (swearAmmount < 1)
+            {
+                DieFromNotSwearing();
             }
         } 
     }
@@ -109,6 +118,13 @@ public class PlayerController : MonoBehaviour
         // there has to be a better name for this
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM THE EXCITEMENT OF SWEARING";
+        gameOverText.SetActive(true);
+    }
+
+    public void DieFromNotSwearing()
+    {
+        gameLost = true;
+        gameOverText.GetComponent<Text>().text = "YOU DIED FROM A LACK OF SWEARING";
         gameOverText.SetActive(true);
     }
 }

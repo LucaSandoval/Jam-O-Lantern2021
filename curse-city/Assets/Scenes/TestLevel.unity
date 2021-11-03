@@ -1242,6 +1242,12 @@ MonoBehaviour:
   swearSlider: {fileID: 2080295387}
   gameOverText: {fileID: 297587513}
   swearEffect: {fileID: 5947989444893809584, guid: bf33f2f9002afd74292071ac3ef5adf8, type: 3}
+  soundManager: {fileID: 700871679}
+  swears:
+  - Crap
+  - Damn
+  - Fuck
+  - Shit
 --- !u!1 &640770856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,6 +1377,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &700871677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700871678}
+  - component: {fileID: 700871679}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: SoundManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700871678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700871677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1023493, y: 4.3570805, z: -137.07307}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &700871679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700871677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a991c5c0bfcc74db80a360f8f234bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Crap
+    clip: {fileID: 8300000, guid: d20bb4f9ed80c8147b4a13d3dcf99de1, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Damn
+    clip: {fileID: 8300000, guid: b16c4fd301443bd46982107c7fb486e4, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fuck
+    clip: {fileID: 8300000, guid: 242e10faea24aad4dae083109390dff1, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shit
+    clip: {fileID: 8300000, guid: 4e18e73442441014bb1fed188c39307d, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Down
+    clip: {fileID: 8300000, guid: cf681c1610f70894baf3ac0dc186bdaa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &714521908
 GameObject:
   m_ObjectHideFlags: 0
