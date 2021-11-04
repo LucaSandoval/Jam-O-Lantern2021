@@ -19,7 +19,7 @@ public class SwearBubble : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && PlayerController.gameLost == false)
         {
             for(int i = 0; i < currentSwearChars.Length; i++)
             {

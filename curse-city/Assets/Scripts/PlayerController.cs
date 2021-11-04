@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public playerState state;
 
     private Rigidbody2D rb;
+    private SpriteRenderer ren;
+    private Animator anim;
 
     public float swearAmmount;
     private float swearBarMax = 100;
@@ -31,6 +33,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        ren = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
 
         swearSlider.maxValue = swearBarMax;
@@ -43,9 +47,23 @@ public class PlayerController : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.x) > 0.05f)
         {
+            anim.SetBool("walking", true);
+            anim.SetBool("idle", false);
+
             state = playerState.walking;
+
+            if (rb.velocity.x > 0.05f)
+            {
+                ren.flipX = false;
+            } else if (rb.velocity.x < -0.05f)
+            {
+                ren.flipX = true;
+            }
+
         } else
         {
+            anim.SetBool("walking", false);
+            anim.SetBool("idle", true);
             state = playerState.idle;
         }
 

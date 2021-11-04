@@ -115,7 +115,7 @@ public class CitizenController : MonoBehaviour
                     rb.velocity = new Vector2(0, 0);
                     break;
                 case movementState.flee:
-                    movementSpeed = 5;
+                    movementSpeed = 10;
                     rb.velocity = new Vector2(movementSpeed * moveDir, rb.velocity.y);
                     break;
             }
