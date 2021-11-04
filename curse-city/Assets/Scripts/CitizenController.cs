@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CitizenController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CitizenController : MonoBehaviour
     public bool cop;
 
     public float movementSpeed;
+   
     private Rigidbody2D rb;
 
     //Current state of citizen movement
@@ -27,15 +29,28 @@ public class CitizenController : MonoBehaviour
 
     public bool blownAway;
 
+    public GameObject niceMessage;
+
+    private float niceMessagetimer;
+
+    public string[] niceMessages;
+
+    private Canvas mainCanv;
+
+    private GameObject currentNiceMessage;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        mainCanv = GameObject.Find("Canvas").GetComponent<Canvas>();
 
         timer = moveStateTimer;
         
         state = movementState.walk;
         moveDir = getRandomDir();
+
+        niceMessagetimer = Random.Range(3, 12);
     }
 
     public void Update()
@@ -51,10 +66,41 @@ public class CitizenController : MonoBehaviour
             }
         }
 
+        if (cop == false)
+        {
+            if (niceMessagetimer > 0)
+            {
+                niceMessagetimer -= Time.deltaTime;
+            }
+            else if (blownAway == false && PlayerController.gameLost == false)
+            {
+                SayNiceMessage();
+                niceMessagetimer = Random.Range(3, 12);
+            }
+        }
+
         if (PlayerController.gameLost == true && cop == false)
         {
             state = movementState.flee;
         }
+
+        if (currentNiceMessage != null)
+        {
+            currentNiceMessage.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + 2, 0));
+        }
+    }
+
+    public void SayNiceMessage()
+    {
+        GameObject newMessage = niceMessage;
+        GameObject spawnedMessage = Instantiate(newMessage);
+
+        spawnedMessage.transform.SetParent(mainCanv.transform);
+        spawnedMessage.transform.GetChild(0).GetComponent<Text>().text = niceMessages[Random.Range(0, niceMessages.Length)];
+
+        currentNiceMessage = spawnedMessage;
+
+        //spawnedMessage.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + 2, 0));
     }
 
     public void PickNewState()

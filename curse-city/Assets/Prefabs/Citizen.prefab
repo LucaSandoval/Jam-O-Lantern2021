@@ -162,12 +162,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 496c6e677070c3745b5c7b39f3b79ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cop: 0
   movementSpeed: 1
   state: 0
   moveDir: 0
   moveStateTimer: 5
   timer: 0
   blownAway: 0
+  niceMessage: {fileID: 9139627193396992732, guid: 0963080ea5f99f54d9fcc371d5ec1a9f, type: 3}
+  niceMessages:
+  - Good morning!
+  - Have a great day!
+  - It's so nice out!
 --- !u!114 &714962867085045056
 MonoBehaviour:
   m_ObjectHideFlags: 0
