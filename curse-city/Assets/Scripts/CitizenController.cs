@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CitizenController : MonoBehaviour
 {
+
+    public bool cop;
+
     public float movementSpeed;
     private Rigidbody2D rb;
 
@@ -42,8 +45,15 @@ public class CitizenController : MonoBehaviour
             timer -= Time.deltaTime;
         } else
         {
-            
-            PickNewState();
+            if (PlayerController.gameLost == false)
+            {
+                PickNewState();
+            }
+        }
+
+        if (PlayerController.gameLost == true && cop == false)
+        {
+            state = movementState.flee;
         }
     }
 
@@ -104,13 +114,17 @@ public class CitizenController : MonoBehaviour
                 case movementState.stop:
                     rb.velocity = new Vector2(0, 0);
                     break;
+                case movementState.flee:
+                    movementSpeed = 5;
+                    rb.velocity = new Vector2(movementSpeed * moveDir, rb.velocity.y);
+                    break;
             }
         }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Wall")
+        if (other.tag == "Wall" && state != movementState.flee)
         {
             timer = moveStateTimer + Random.Range(-1, 3);
             state = movementState.walk;
@@ -123,5 +137,6 @@ public class CitizenController : MonoBehaviour
 public enum movementState
 {
     walk,
-    stop
+    stop,
+    flee
 }

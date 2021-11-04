@@ -22,7 +22,7 @@ public class PoliceOfficer : MonoBehaviour
     public void Awake()
     {
         spawnCooldown = 2;
-        onCooldown = false;
+        onCooldown = true;
     }
 
     public void FixedUpdate()
@@ -30,6 +30,9 @@ public class PoliceOfficer : MonoBehaviour
         if (spawnCooldown > 0)
         {
             spawnCooldown -= Time.deltaTime;
+        } else
+        {
+            onCooldown = false;
         }
     }
 

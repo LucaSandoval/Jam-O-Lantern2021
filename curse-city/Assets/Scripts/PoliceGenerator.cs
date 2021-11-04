@@ -29,7 +29,7 @@ public class PoliceGenerator : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnDelay);
             GameObject newPolice = Instantiate(police, gameObject.transform);
-            newPolice.transform.localPosition = new Vector2(Random.Range(-15, 15), 0);
+            newPolice.transform.localPosition = new Vector2(Random.Range(-25, 25), 0);
 
             GameObject newCar = Instantiate(policeCar);
 
@@ -44,7 +44,11 @@ public class PoliceGenerator : MonoBehaviour
                 newCar.GetComponent<PoliceCar>().direction = 1;
             }
 
-            spawnDelay *= 0.9f;
+
+            if (spawnDelay > 3)
+            {
+                spawnDelay *= 0.9f;
+            }
         }
     }
 }
