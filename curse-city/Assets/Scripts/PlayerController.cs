@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         // there has to be a better name for this
         soundManager.Pause("Theme");
+        soundManager.Play("Down");
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM THE EXCITEMENT OF SWEARING";
         gameOverText.SetActive(true);
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
     public void DieFromNotSwearing()
     {
         soundManager.Pause("Theme");
+        soundManager.Play("Down");
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM A LACK OF SWEARING";
         gameOverText.SetActive(true);

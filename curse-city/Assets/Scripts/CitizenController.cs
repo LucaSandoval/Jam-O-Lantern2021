@@ -95,7 +95,7 @@ public class CitizenController : MonoBehaviour
         GameObject newMessage = niceMessage;
         GameObject spawnedMessage = Instantiate(newMessage);
 
-        spawnedMessage.transform.SetParent(mainCanv.transform);
+        spawnedMessage.transform.SetParent(mainCanv.transform, false);
         spawnedMessage.transform.GetChild(0).GetComponent<Text>().text = niceMessages[Random.Range(0, niceMessages.Length)];
 
         currentNiceMessage = spawnedMessage;
