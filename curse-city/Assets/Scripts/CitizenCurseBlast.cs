@@ -6,11 +6,13 @@ public class CitizenCurseBlast : MonoBehaviour
 {
     private Transform player;
     private Rigidbody2D rb;
+    private SoundManager soundManager;
 
     private void Start()
     {
         player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -19,6 +21,8 @@ public class CitizenCurseBlast : MonoBehaviour
             PlayerController.gameLost == false)
         {
             GetComponent<CitizenController>().blownAway = true;
+
+            soundManager.Play(GetComponent<CitizenController>().screams[Random.Range(0, 5)]);
 
             //update score
             ScoreTracker.score++;

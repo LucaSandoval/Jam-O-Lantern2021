@@ -2164,6 +2164,42 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Blast1
+    clip: {fileID: 8300000, guid: acf8ad653313b7a4e823598eabf2ecab, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blast2
+    clip: {fileID: 8300000, guid: 07089afcb0e513b4083b89fd3ac67118, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blast3
+    clip: {fileID: 8300000, guid: eddfef9254e5287429662c3446e7f650, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blast4
+    clip: {fileID: 8300000, guid: 8862b9ce307a71449ac836a318536640, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blast5
+    clip: {fileID: 8300000, guid: e02a0d94947fd104ab0758802ffef541, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Siren
+    clip: {fileID: 8300000, guid: 61648a6d7d944e547903596f1cdbb083, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &714521908
 GameObject:
   m_ObjectHideFlags: 0

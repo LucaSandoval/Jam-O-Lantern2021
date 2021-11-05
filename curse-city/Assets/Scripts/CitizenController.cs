@@ -42,6 +42,7 @@ public class CitizenController : MonoBehaviour
 
     private GameObject currentNiceMessage;
 
+    public string[] screams;
 
     void Start()
     {

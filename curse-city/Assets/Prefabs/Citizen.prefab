@@ -179,6 +179,12 @@ MonoBehaviour:
   - It's so nice out!
   - 'Pardon me! '
   - You look great!
+  screams:
+  - Blast1
+  - Blast2
+  - Blast3
+  - Blast4
+  - Blast5
 --- !u!114 &714962867085045056
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class PoliceGenerator : MonoBehaviour
     public GameObject police;
 
     public GameObject policeCar;
+    private SoundManager soundManager;
 
     // 0 - Top lane
     // 1 - Bottom lane
@@ -17,6 +18,8 @@ public class PoliceGenerator : MonoBehaviour
     {
         GameObject newPolice = Instantiate(police, gameObject.transform);
         newPolice.transform.localPosition = new Vector2(-10, 0);
+
+        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
 
         StartCoroutine(PoliceSpawning());
     }

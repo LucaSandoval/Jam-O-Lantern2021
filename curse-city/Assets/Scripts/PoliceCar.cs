@@ -12,10 +12,17 @@ public class PoliceCar : MonoBehaviour
     public int direction;
 
     public SpriteRenderer ren;
+    private SoundManager soundManager;
+
+    public AudioSource source;
 
     public void Start()
     {
+        //soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         Destroy(gameObject, 15);
+
+        //soundManager.Play("Siren");
+        //source.Play();
 
         if (direction == 0)
         {
