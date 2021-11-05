@@ -1006,6 +1006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1557756705}
   - component: {fileID: 1557756706}
+  - component: {fileID: 1557756707}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1039,6 +1040,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3885e667afc724ca71f83d7a6395f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1557756707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557756704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70a991c5c0bfcc74db80a360f8f234bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Title
+    clip: {fileID: 8300000, guid: 35a45b12def0b1c4a924ab659327d3a4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
 --- !u!1 &1601756666
 GameObject:
   m_ObjectHideFlags: 0
