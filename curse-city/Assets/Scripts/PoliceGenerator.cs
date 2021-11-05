@@ -38,10 +38,12 @@ public class PoliceGenerator : MonoBehaviour
             {
                 newCar.transform.position = new Vector3(spawnPos[0].x, spawnPos[0].y, 0);
                 newCar.GetComponent<PoliceCar>().direction = 0;
+                newCar.GetComponent<PoliceCar>().ren.sortingOrder = 9;
             } else
             {
                 newCar.transform.position = new Vector3(spawnPos[1].x, spawnPos[1].y, 0);
                 newCar.GetComponent<PoliceCar>().direction = 1;
+                newCar.GetComponent<PoliceCar>().ren.sortingOrder = 10;
             }
 
 

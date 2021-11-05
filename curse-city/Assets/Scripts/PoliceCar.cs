@@ -11,12 +11,19 @@ public class PoliceCar : MonoBehaviour
     //1 - Left
     public int direction;
 
-    private SpriteRenderer ren;
+    public SpriteRenderer ren;
 
     public void Start()
     {
-        ren = GetComponent<SpriteRenderer>();
         Destroy(gameObject, 15);
+
+        if (direction == 0)
+        {
+            ren.flipX = false;
+        } else
+        {
+            ren.flipX = true;
+        }
     }
 
     public void FixedUpdate()

@@ -45,27 +45,50 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        if (Mathf.Abs(rb.velocity.x) > 0.05f)
+        if (gameLost == false)
         {
-            anim.SetBool("walking", true);
-            anim.SetBool("idle", false);
-
-            state = playerState.walking;
-
-            if (rb.velocity.x > 0.05f)
+            if (swearAmmount > swearBarMax)
             {
-                ren.flipX = false;
-            } else if (rb.velocity.x < -0.05f)
-            {
-                ren.flipX = true;
+                DieFromSwearing();
             }
+            else if (swearAmmount < 1)
+            {
+                DieFromNotSwearing();
+            }
+        }
 
+        if (state != playerState.death)
+        {
+            if (Mathf.Abs(rb.velocity.x) > 0.05f)
+            {
+                anim.SetBool("walking", true);
+                anim.SetBool("idle", false);
+
+                state = playerState.walking;
+
+                if (rb.velocity.x > 0.05f)
+                {
+                    ren.flipX = false;
+                }
+                else if (rb.velocity.x < -0.05f)
+                {
+                    ren.flipX = true;
+                }
+
+            }
+            else
+            {
+                anim.SetBool("walking", false);
+                anim.SetBool("idle", true);
+                state = playerState.idle;
+            }
         } else
         {
+            anim.SetBool("death", true);
             anim.SetBool("walking", false);
-            anim.SetBool("idle", true);
-            state = playerState.idle;
+            anim.SetBool("idle", false);
         }
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && gameLost == false)
         {
@@ -116,13 +139,7 @@ public class PlayerController : MonoBehaviour
                 swearAmmount += Time.deltaTime * 100;
             }
 
-            if (swearAmmount > swearBarMax)
-            {
-                DieFromSwearing();
-            } else if (swearAmmount < 1)
-            {
-                DieFromNotSwearing();
-            }
+            
         } else
         {
             rb.velocity = Vector2.zero;
@@ -135,6 +152,7 @@ public class PlayerController : MonoBehaviour
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "CAUGHT FOR SWEARING";
         gameOverText.SetActive(true);
+        state = playerState.death;
     }
 
     public void DieFromSwearing()
@@ -145,6 +163,7 @@ public class PlayerController : MonoBehaviour
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM THE EXCITEMENT OF SWEARING";
         gameOverText.SetActive(true);
+        state = playerState.death;
     }
 
     public void DieFromNotSwearing()
@@ -154,6 +173,7 @@ public class PlayerController : MonoBehaviour
         gameLost = true;
         gameOverText.GetComponent<Text>().text = "YOU DIED FROM A LACK OF SWEARING";
         gameOverText.SetActive(true);
+        state = playerState.death;
     }
 }
 
@@ -161,4 +181,5 @@ public enum playerState
 {
     idle,
     walking,
+    death
 }
