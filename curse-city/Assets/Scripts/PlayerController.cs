@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
         soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
 
         swearSlider.maxValue = swearBarMax;
-        swearAmmount = swearBarMax / 2;
+        swearAmmount = swearBarMax - 21;
 
         soundManager.Play("Theme");
     }
@@ -97,6 +98,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(SpawnSwearEffect());
 
             soundManager.Play(swears[Random.Range(0, swears.Length)]);
+        } else if (Input.GetKeyDown(KeyCode.Return) && gameLost == true)
+        {
+            gameLost = false;
+            SceneManager.LoadScene(1);
         }
 
         swearSlider.value = swearAmmount;
