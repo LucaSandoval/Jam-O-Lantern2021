@@ -9,12 +9,14 @@ public class TitleManager : MonoBehaviour
 
     private SoundManager soundManager;
     public GameObject tutorial;
+    public GameObject credits;
 
     public void Start()
     {
         soundManager = GetComponent<SoundManager>();
         soundManager.Play("Title");
         tutorial.SetActive(false);
+        credits.SetActive(false);
     }
 
 
@@ -26,5 +28,10 @@ public class TitleManager : MonoBehaviour
     public void TutorialOpen()
     {
         tutorial.SetActive(true);
+    }
+
+    public void CreditsOpen()
+    {
+        credits.SetActive(true);
     }
 }
