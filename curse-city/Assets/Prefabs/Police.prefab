@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4992162670422974360}
   - component: {fileID: 4992162670422974365}
   - component: {fileID: 5524711194045461205}
+  - component: {fileID: -7472121720320769660}
   m_Layer: 7
   m_Name: Police
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4992162670422974366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
-  m_Color: {r: 0.54402506, g: 0.57252353, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 93f123e3ce5928f41adf3a14f8b71b84, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,7 +123,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.58, y: 1.04}
   m_Direction: 0
 --- !u!61 &4992162670422974360
 BoxCollider2D:
@@ -141,14 +142,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.83, y: 1.25}
+  m_Size: {x: 0.67, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &4992162670422974365
 MonoBehaviour:
@@ -164,11 +165,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cop: 1
   movementSpeed: 2
+  shirtRen: {fileID: 0}
   state: 0
   moveDir: 0
   moveStateTimer: 5
   timer: 0
   blownAway: 0
+  niceMessage: {fileID: 0}
+  niceMessages: []
 --- !u!114 &5524711194045461205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +185,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a2ba822e8598240a9406354a4dba00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-7472121720320769660
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4992162670422974366}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d25cdafb598c7b747aa10a9069e4bd92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

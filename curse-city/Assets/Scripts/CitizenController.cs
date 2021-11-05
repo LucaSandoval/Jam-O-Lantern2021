@@ -11,6 +11,9 @@ public class CitizenController : MonoBehaviour
     public float movementSpeed;
    
     private Rigidbody2D rb;
+    private Animator anim;
+    public SpriteRenderer shirtRen;
+    private SpriteRenderer ren;
 
     //Current state of citizen movement
     public movementState state;
@@ -43,6 +46,10 @@ public class CitizenController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        anim = GetComponent<Animator>();
+
+        ren = GetComponent<SpriteRenderer>();
         mainCanv = GameObject.Find("Canvas").GetComponent<Canvas>();
 
         timer = moveStateTimer;
@@ -87,6 +94,25 @@ public class CitizenController : MonoBehaviour
         if (currentNiceMessage != null)
         {
             currentNiceMessage.transform.position = Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + 2, 0));
+        }
+
+        if (rb.velocity.x > 0.05f)
+        {
+            ren.flipX = false;
+
+            if (cop == false)
+            {
+                shirtRen.flipX = false;
+            }
+        }
+        else if (rb.velocity.x < -0.05f)
+        {
+            ren.flipX = true;
+
+            if (cop == false)
+            {
+                shirtRen.flipX = true;
+            }
         }
     }
 
@@ -156,12 +182,18 @@ public class CitizenController : MonoBehaviour
             {
                 case movementState.walk:
                     rb.velocity = new Vector2(movementSpeed * moveDir, rb.velocity.y);
+
+                    anim.SetBool("walking", true);
+
                     break;
                 case movementState.stop:
                     rb.velocity = new Vector2(0, 0);
+
+                    anim.SetBool("walking", false);
                     break;
                 case movementState.flee:
                     movementSpeed = 10;
+                    anim.SetBool("walking", true);
                     rb.velocity = new Vector2(movementSpeed * moveDir, rb.velocity.y);
                     break;
             }
